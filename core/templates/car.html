@@ -59,7 +59,7 @@
                                     {% if query is None %}
                                     <h3>{% with car.count as total_car %}</h3>
                                     
-                                    <div class="sale "><span>{{total_car}}</span></div>
+                                    {% comment %} <div class="sale "><span>{{total_car}}</span></div> {% endcomment %}
                                     {% endwith %}
                                     {% endif %}
                                     <h1>We couldn’t find any result</h1>
