@@ -1,0 +1,33 @@
+{% load static %}
+<footer>
+    <div class="my-container">
+        <div class="footer-content">
+            <div class="content-box">
+                <a href="{% url 'core:offers' %}"> <h1>View all inventory</h1></a>
+            </div>
+
+            <div class="content-box">
+                <a href="{% url 'core:support' %}"><h1>Overwiew</h1></a>
+            </div>
+
+            <div class="content-box">
+                <div class="social-icons">
+                    <a href=""><img src="{% static 'svg/fb.svg' %}" alt=""></a> 
+                   <a href=""><img src="{% static 'svg/insta.svg' %}" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<section class="copyright-section">
+    <div class="my-container">
+        <div class="copyright-content">
+            <div class="copyright">© 2022 Turbohub.co</div>
+            <div class="maxcreative">
+                <p>powered by</p>
+                <a href="" target="_blank" ><img src="{% static 'svg/powered-by.svg' %}" alt=""></a> 
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+    
+{% load static %}
+
+{% block content %}
+    <section class="support-section gray">
+        <div class="my-container">
+            <div class="support-content">
+                <div class="contact">
+                    <div class="map">
+                        <div class="mapouter"><div class="gmap_canvas"><iframe width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;}</style><a href="https://www.embedgooglemap.net"></a><style>.gmap_canvas {overflow:hidden;background:none!important;height:800px;width:800px;}</style></div></div>
+                    </div>
+                    {% for address in address_list %}
+                    <div class="address-box">
+                        <div class="logo2">
+                            <img src="{% static 'svg/logo.svg' %}" alt="">
+                        </div>
+
+                        <div class="address">
+                            <h4>Address</h4>
+                            <p>{{address.address}}</p>
+                        </div>
+
+                        <div class="number">
+                            <h4>Phone number</h4>
+                            <p>{{address.phone_number}}</p>
+                        </div>
+
+                        <div class="working-hours">
+                            <h4>Working hours</h4>
+                            <p>{{address.working_hours|safe}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="about">
+                    {% for about in about_list %}
+                    <div class="about-content">
+                        <div class="mission">OUR MISSION</div>
+
+                        <p>{{about.content|safe}}</p>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+  
+
+
+   
+
+
+    <section class="why-choose-us-section">
+        <div class="my-container">
+            <div class="choose-us">
+                <div class="choose-title">
+                    <h1>Why Choose Us</h1>
+                    <p>Here’s why lots of clients choose our services.</p>
+                </div>
+
+                <div class="choose-content">
+                    <div class="reason-box">
+                        <img src="{% static 'svg/Checklist.svg' %}" alt="">
+                        <h4>Regular Cheks</h4>
+                        <p>All our cars are regularly inspected to offer you the best options for solving the daily transportation tasks as efficiently as possible.</p>
+                    </div>
+
+                    <div class="reason-box">
+                        <img src="{% static 'svg/Help.svg' %}" alt="">
+                        <h4>24/7 Support</h4>
+                        <p>Our team is always ready to help you 24/7 professional support with registering your vehicle and getting to know it better.</p>
+                    </div>
+
+                    <div class="reason-box">
+                        <img src="{% static 'svg/idCard.svg' %}" alt="">
+                        <h4>Professionalism</h4>
+                        <p>Turbohub’s team has a lot of dedicated experts that are determined to give you a car that fits your needs the most.</p>
+                    </div>
+
+                    <div class="reason-box">
+                        <img src="{% static 'svg/target.svg' %}" alt="">
+                        <h4>Affordability</h4>
+                        <p>If you are looking for an affordable way to buy a desired car, Turbohub can provide you with what you need in no time.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
+   
+   
+    

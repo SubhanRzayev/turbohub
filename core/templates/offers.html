@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="team" id="team" name="category_query">
+        <div class="team-content">
+            <div class="wrapper">
+                
+                <div class="wrapper_left category">
+                    <div class="my-container">
+                        <div class="wrapper-top">
+
+                            <div class="sale"> <span>{{cars}}</span>  cars for sale</div>
+
+                            <ul>
+                                <div class="condition">Condition:</div>
+                                <li data-li="allteam" {% if not category %}class="active"{% endif %}>
+                                <a href="{% url 'core:offers' %}">
+                                        <p>All</p>
+                                    </a>
+                                </li>
+                                        
+                            
+                                {% for x in categories %}
+                            
+                                        <a href="{{x.get_absolute_url}}" 
+                                            >
+                                        <li data-li="main" class="{% if x.slug in request.path %}active{% endif %}">
+                                            
+                                            <p>{{x.name}}</p>
+                                            
+                                        </li>
+                                    </a>    
+                            {% endfor %}
+                            </ul>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="wrapper_right gray">
+                    <div class="my-container">
+                        <div class="items allteam">
+                            <div class="all-cars">
+                                
+                                {% for e in car %}
+                                <div class="item" class="width100">
+                                        <a href="{{e.get_absolute_url}}">
+                                            <div class="car-img-box">
+                                                <img src="{{e.car_image.url}}">
+                                            </div>
+                                        </a>
+                                        <div class="details">
+                                            <div class="content">
+                                                <h4>{{e.name}}</h4>
+                                                <div class="card-details">
+                                                    <div class="price">
+                                                        {{e.price}}
+                                                    </div>
+                                                    <div class="line-2"></div>
+                                                    <div class="km">
+                                                        {{e.mileage}}
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+                                    </div>
+                                {% endfor %}
+
+                                
+                            </div>
+                            
+                            
+                            
+                          
+                            
+                        </div>
+
+                       
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pages">
+        <div class="my-container">
+            <div class="page-pagination">
+                <div class="pagination">
+                    {% if car.has_other_pages %}
+                    <ul class="pagination">
+                        {% if car.has_previous %}
+                        <li class="page-item btn prev disabled">
+                            <a class="page-link" href="?page={{car.previous_page_number}}"><span><i class="fas fa-angle-left"></i>Previous</span></a>
+                        </li>
+                        {% endif %}
+
+                        {% for i in car.paginator.page_range %}
+                        {% if car.number == i %}
+                        <li class="page-item first numb active" aria-current='page'>
+                            <a class="page-link" href="?page={{i}}"><span>{{i}}</span></a>
+                        </li>
+                        {% else %}
+
+                         
+                        <li class="first numb">
+                            <a class="page-link" href="?page={{i}}">{{i}}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        
+                        
+                        {% if car.has_next %}
+                        <li class="page-item btn next">
+                            <a class="page-link" tabindex="-1" href="?page={{car.next_page_number}}"><span>Next <i class="fas fa-angle-right"></i></span></a>
+                        </li>
+                        {% endif %}
+                        {% comment %} <li class="btn prev"><span><i class="fas fa-angle-left"></i> Previous</span></li> 
+                        <li class="first numb"><span>1</span></li>
+                        <li class="first numb"><span>2</span></li>
+                        <li class="first numb"><span>3</span></li>
+                        <li class="btn next"><span>Next <i class="fas fa-angle-right"></i></span></li> {% endcomment %}
+                        <!--pages or li are comes from javascript -->
+                     </ul>
+                    {% endif %}
+                  </div>
+            </div>
+           
+        </div>
+    </section>
+
+
+    {% endblock content %} 
+    
+
+    {% block js %}
+    
+    <script src="{% static 'js/tab.js' %}"></script>
+    <script src="{% static 'js/pagination.js' %}"></script>
+    
+    {% endblock js %}

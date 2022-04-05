@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+
+
+    <section>
+        <div class="my-container">
+            <div class="filter-height result">
+                {% if query %}
+                <h3>{% with car.count as total_car %}</h3>
+                
+                <div class="sale "><span>{{total_car}} total</span>  cars for sale</div>
+                {% endwith %}
+                {% else %}
+                <h3>{% with car.count as total_car %}</h3>
+                
+                    <div class="sale "><span>{{total_car}} total</span>  cars for sale</div>
+                {% endwith %}
+                {% endif %}
+            </div> 
+        </div>
+    </section>
+    <section class="show-result gray">
+        <div class="wrapper_right gray">
+            <div class="my-container">
+                <div class="items allteam ">
+                    <div class="all-cars">
+                        {% for c in car %}
+                        
+                        
+                        <a href="{{c.get_absolute_url}}">
+                            <div class="item" class="width100">
+                                <div class="car-img-box">
+                                    <img src="{{c.car_image.url}}">
+                                </div>
+                                <div class="details">
+                                    <div class="content">
+                                        <h4>{{c.name}}</h4>
+                                        <div class="card-details">
+                                            <div class="price">
+                                                {{c.price}}
+                                            </div>
+                                            <div class="line-2"></div>
+                                            <div class="km">
+                                                {{c.mileage}}
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                            </div>
+                        </a>
+                        {% empty %}
+                        <div class="my-container">
+                            <div class="search-result">
+                                <div class="about">
+                                    <div class="about-content">
+                                        <div class="mission">SEARCH RESULT</div>
+                                        {% if query is None %}
+                                        <h3>{% with car.count as total_car %}</h3>
+                                        
+                                        <div class="sale "><span>{{total_car}}</span></div>
+                                        {% endwith %}
+                                        {% endif %}
+                                        <h1>We couldn’t find any result</h1>
+                                    </div>
+                                </div> 
+                
+                                <div class="search-icon">
+                                    <div class="lupa">
+                                        <img src="{% static 'img/output-onlinegiftools.gif' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+              </div>   
+            </div>
+        </div>
+       
+
+    </section>
+
+    
+
+{% endblock content %}

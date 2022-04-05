@@ -1,0 +1,23 @@
+{% load static %}
+<header>
+    <div class="navbar offers-nav">
+        <div class="nav-menu">
+            <div class="logo">
+               <a href="{% url 'core:index' %}"><img src="{% static 'svg/logo.svg' %}" alt=""></a> 
+            </div>
+
+            <div class="nav-list offer-li">
+                    <ul>
+                        <li> <a href="{% url 'core:offers' %}">Shop</a> </li>
+                        <li> <a href="{% url 'core:support' %}">Support</a></li>
+                    </ul>
+            </div>
+
+            <div class="hamburger-menu">
+                <div class="hamburger-line color-b"></div>
+                <div class="hamburger-line color-b"></div>
+                <div class="hamburger-line color-b"></div>
+            </div>
+        </div>
+    </div>
+</header>

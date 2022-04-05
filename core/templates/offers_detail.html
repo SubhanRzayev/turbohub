@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="back-button">
+        <div class="my-container">
+            <a href="{% url 'core:offers' %}">
+                <div class="go-back">
+                    <span><img src="{% static 'svg/back.svg' %}" alt=""></span> <p>Back to Cars For Sale</p>
+                </div>
+            </a>
+            
+        </div>
+    </section>
+
+    <section class="car-details-section gray">
+        <div class="my-container">
+            <div class="model-details">
+                <div class="model-name">
+                    <div class="used">
+                        <div class="used-car">{{car.condition}}</div>
+                        <div class="name">{{car.brend}}</div>
+                    </div>
+
+                    <div class="car-name">{{car.name}}</div>
+                </div>
+
+                <div class="model-price">
+                    {{car.price}}
+                </div>
+            </div>
+
+            <div class="car-img">
+                <div class="car-slide slider" id="gallery">
+                    <div class="container-fluid">
+                        <div class="row row-width">
+                          
+                          
+                          <div class="col-lg-12">
+                            <div class="ig-view pt-2 px-1 d-flex flex-column justify-content-center align-items-center">
+                              <img class="" src="{{car.car_image.url}}" alt=""/>
+                      
+                            </div>
+                          </div>
+
+                          <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center">
+                            
+                            <div class="ig-box d-flex flex-rows justify-content-space-between align-items-center">
+                                {% for i in car.cars_image.all %}
+                              <div class="mx-1"><img class="c1" data-id="1" src="{{i.image.url}}" alt=""/></div>
+                             
+                              {% endfor %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    
+                </div>
+
+                <div class="get-in-touch">
+                    {% for a in address_list %}
+                    <div class="contact-box">
+
+                        <div class="question">
+                            <div class="question-ask">
+                                <p>Have a question? </p> <h5> Get in touch</h5>
+                            </div>
+                            
+                        </div>
+
+                        <a href="tel:+1 (289) 788-9196 ">
+                            <div class="call-us">
+                                <img src="{% static 'svg/callicon.svg' %}" alt=""> 
+                                <div class="call-number">
+                                    <p>Call us</p>
+                                     <h5>{{a.call_us}}</h5>
+                                </div>
+                            </div>
+                        </a>
+                        
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dealer">
+        <div class="my-container">
+            <div class="details-of-product">
+                <div class="dealers-comments">
+                    <h4>Dealer Comments</h4>
+                    <p>{{car.dealer_comments}}</p>
+                </div>
+
+                <hr>
+
+                <div class="vehicle">
+
+                    <h4>Vehicle Details</h4>
+                    
+                    <div class="table">
+                        <table>
+                            <tr>
+                              <th>Kilometres</th>
+                              <td>{{car.kilometres}}</td>
+                            </tr>
+    
+                            <tr>
+                                <th>Colour</th>
+                                <td>{{car.colour}}</td>
+                            </tr>
+    
+                              <tr>
+                                <th>Transmission</th>
+                                <td>{{car.transmission}}</td>
+                                
+                              </tr>
+    
+                              <tr>
+                                <th>Fuel Type</th>
+                                <td>{{car.fuel_type}}</td>
+                                
+                              </tr>
+    
+                              
+                            
+                          </table>
+    
+                          <table>
+                            <tr>
+                                <th class="right">Body</th>
+                                <td>{{car.body}}</td>
+                              </tr>
+    
+                              <tr>
+                                <th class="right">Engine</th>
+                                <td>{{car.engine}}</td>
+                              </tr>
+    
+                              <tr>
+                                <th class="right">Drive Type</th>
+                                <td>{{car.drive_type}}</td>
+                              </tr>
+    
+                              <tr>
+                                <th class="right"> </th>
+                                <td> </td>
+                              </tr>
+                          </table>
+                    </div>
+                    
+                </div>
+
+                <hr>
+
+                <div class="dept">
+                    <h4>In depth specifications</h4>
+
+                    <div class="specifications">
+                        <ul>
+                            <li>{{car.in_depth_specifications1|safe}}</li>
+                            
+                            
+                            
+                        </ul>
+                        <ul>
+                            <li>{{car.in_depth_specifications2|safe}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
+   
+
+  
+
+   
+    
+    {% block js %}
+
+    <script src="{% static 'js/slide.js' %}"></script>
+    
+    {% endblock js %}
